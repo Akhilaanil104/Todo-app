@@ -12,22 +12,37 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+    SafeArea(child:  Scaffold(
       
-      body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
+      body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("SIGNUP HERE",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 40),)
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Text("SIGNUP HERE",style:  TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 40),),
+            ),
+             TextFormField(decoration: InputDecoration(hintText: "Enter name",),),
+            TextFormField(decoration: InputDecoration(hintText: "Enter email address"),),
+             TextFormField(decoration: InputDecoration(hintText: "phonenumber"),),
+              TextFormField(decoration: InputDecoration(hintText: "Location"),),
+            
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: TextButton(onPressed: (){}, child: Text("Signup")),
+            )
 
+            
+            
+                
+                
           ],
         ),
       ),
 
 
-    );
+    ),);
   }
 }
