@@ -17,6 +17,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     bool _obscureText=true;
     return Scaffold(
+      
+      resizeToAvoidBottomInset: false,
       backgroundColor: ColorApp.bgcolor,
       appBar: AppBar(
         backgroundColor: ColorApp.bgcolor,
@@ -27,138 +29,153 @@ class _LoginPageState extends State<LoginPage> {
         centerTitle: true,
       ),
       body: 
-      Stack(
-        children: [
-         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-
+      
+      Container(
+        child: Stack(
           children: [
-            Image(
-              width: 250,
-              // height: 40,
-              image:
-             AssetImage("assets/images/logo2.png"))
-            // Image(
-              // height: 200,
-              // image: AssetImage(
-                // "assets/images/birdlogo.png"),
-                // ),
-                ],
-         ),
-          Column(
+           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+        
             children: [
-             const AppName(),
-              const SizedBox(
-                height: 20,
-              ),
-              Form(
-                child: Column(
-                  children: [
-                    Container(
-                      padding: ConstItem.textformPad,
-                      margin: ConstItem.textFormMargin,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 99, 137, 152),
-                          borderRadius: BorderRadius.circular(30)
-                          // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
-                          ),
-                      child: TextFormField(
-                        decoration: const
-                         InputDecoration(
-                          border: InputBorder.none,
-                          labelStyle:
-                              TextStyle(color: Color.fromARGB(255, 176, 179, 183)),
-                          label: Text(
-                            "Username",
-                            style: TextStyle(fontSize: 24),
-                          ),
-                          //  helperText: "Enter your username",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: ConstItem.textformPad,
-                      margin: ConstItem.textFormMargin,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 99, 137, 152),
-                          borderRadius: BorderRadius.circular(30)
-                          // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
-                          ),
-                      child: TextFormField(
-                        obscureText: _obscureText,
-                        decoration: InputDecoration(
-                           suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _obscureText = !_obscureText;
-                              });
-                            },
-                            icon: Icon(color: Colors.white,
-                              _obscureText
-                                ? Icons.visibility_off
-                                // ignore: dead_code
-                                : Icons.visibility),
-                          ),
-                          border: InputBorder.none,
-                          labelStyle:
-                              TextStyle(color: Color.fromARGB(255, 176, 179, 183)),
-                          label: Text(
-                            "Password",
-                            style: TextStyle(fontSize: 24),
-                          ),
-                          //  helperText: "Enter your username",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                        ),
-                      ),
-                    ),
-          SizedBox(height: 20,),
-                    Material(
-                      elevation: 20,
-                      color: Colors.green,
-                      shape:RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))) ,
-                      child: Container(
-                        
-                        width: 350,
-                        child: ElevatedButton(style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Color.fromARGB(255, 232, 235, 229),),
-                        ),
-                          child: Text("Log in",style: TextStyle(
-                            fontFamily: "Teko",fontSize: 35,fontWeight: FontWeight.w900 ),),
-                        onPressed: (){},),
-                      ),
-          
-                    ),
-                   
-          
+              Image(
+                width: 250,
+                // height: 40,
+                image:
+               AssetImage("assets/images/logo2.png"))
+              // Image(
+                // height: 200,
+                // image: AssetImage(
+                  // "assets/images/birdlogo.png"),
+                  // ),
                   ],
+           ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+               const AppName(),
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-               SizedBox(
-                height: 5,
-              ),
-              InkWell(
-                onTap: () {},
-                child: Text(
-                  "Forgotten Password",
-                  style: TextStyle(color: ColorApp.mainText),
+                Form(
+                  child: 
+                  Column(
+                    children: [
+                     
+                      Scrollable(axisDirection: AxisDirection.up,
+                      // dragStartBehavior: ,
+                        viewportBuilder: (context,viewport){
+                        
+                        return Container(
+                          padding: ConstItem.textformPad,
+                          margin: ConstItem.textFormMargin,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 99, 137, 152),
+                              borderRadius: BorderRadius.circular(30)
+                              // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
+                              ),
+                          child: TextFormField(
+                            decoration: const
+                             InputDecoration(
+                              border: InputBorder.none,
+                              labelStyle:
+                                  TextStyle(color: Color.fromARGB(255, 176, 179, 183)),
+                              label: Text(
+                                "Username",
+                                style: TextStyle(fontSize: 24),
+                              ),
+                              //  helperText: "Enter your username",
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                            ),
+                          ),
+                        );
+                      }
+                      ),
+                      Container(
+                        padding: ConstItem.textformPad,
+                        margin: ConstItem.textFormMargin,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 99, 137, 152),
+                            borderRadius: BorderRadius.circular(30)
+                            // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
+                            ),
+                        child: TextFormField(
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                             suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                              icon: Icon(color: Colors.white,
+                                _obscureText
+                                  ? Icons.visibility_off
+                                  // ignore: dead_code
+                                  : Icons.visibility),
+                            ),
+                            border: InputBorder.none,
+                            labelStyle:
+                                TextStyle(color: Color.fromARGB(255, 176, 179, 183)),
+                            label: Text(
+                              "Password",
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            //  helperText: "Enter your username",
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
+                          ),
+                        ),
+                      ),
+            SizedBox(height: 20,),
+                      Material(
+                        elevation: 20,
+                        color: Colors.green,
+                        shape:RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))) ,
+                        child: Container(
+                          
+                          width: 350,
+                          child: ElevatedButton(style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Color.fromARGB(255, 232, 235, 229),),
+                          ),
+                            child: Text("Log in",style: TextStyle(
+                              fontFamily: "Teko",fontSize: 35,fontWeight: FontWeight.w900 ),),
+                          onPressed: (){},),
+                        ),
+            
+                      ),
+                     
+            
+                    ],
+                  ),
                 ),
-              ),
+                 SizedBox(
+                  height: 5,
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    "Forgotten Password",
+                    style: TextStyle(color: ColorApp.mainText),
+                  ),
+                ),
+            
+             
+            
+              ],
+              
+            ),
+             CreateAccountButton(),
           
-           
-            
-            ],
-            
-          ),
-        CreateAccountButton(),
-          // Align(
-          //   alignment: Alignment.bottomCenter,
-          //   child:Image(height:30,
-          //     image: AssetImage("assets/github.png")),
-          // )
-        ],
+            // Align(
+            //   alignment: Alignment.bottomCenter,
+            //   child:Image(height:30,
+            //     image: AssetImage("assets/github.png")),
+            // )
+          ],
+          
+        ),
       ),
+      
+    
       
     );
   }
