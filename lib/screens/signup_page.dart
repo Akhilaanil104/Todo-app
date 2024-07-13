@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
@@ -13,7 +11,6 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
@@ -21,13 +18,16 @@ class _SignupPageState extends State<SignupPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("SIGNUP HERE",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 40),)
-
+            Text(
+              "SIGNUP HERE",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 40),
+            )
           ],
         ),
       ),
-
-
     );
   }
 }
