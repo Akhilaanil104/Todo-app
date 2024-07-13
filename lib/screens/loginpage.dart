@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:todo_app/screens/widgets/appname.dart';
+import 'package:todo_app/screens/widgets/createbutton.dart';
 import 'package:todo_app/utils/colors.dart';
 import 'package:todo_app/utils/const.dart';
 
@@ -47,19 +49,8 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Center(
-                child: Text(
-                  "Akhila's App",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color:ColorApp.mainText,
-                      fontWeight: FontWeight.bold,
-                      // fontFamily: 'Dancing_Script',
-                      fontFamily: "PlaywriteAR",
-                      fontSize: 28),
-                ),
-              ),
-              SizedBox(
+             const AppName(),
+              const SizedBox(
                 height: 20,
               ),
               Form(
@@ -74,7 +65,8 @@ class _LoginPageState extends State<LoginPage> {
                           // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
                           ),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const
+                         InputDecoration(
                           border: InputBorder.none,
                           labelStyle:
                               TextStyle(color: Color.fromARGB(255, 176, 179, 183)),
@@ -159,31 +151,7 @@ class _LoginPageState extends State<LoginPage> {
             ],
             
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 30),
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: 
-              Container(
-                height: 60,
-                width: 350,
-            
-                child: TextButton(onPressed: (){},
-                child:ElevatedButton(style: ButtonStyle(
-                  side:WidgetStateProperty.all(BorderSide(color:ColorApp.mainText )) ,
-                  backgroundColor: WidgetStateProperty.all(ColorApp.bgcolor)
-                
-                ),
-                  onPressed: (){},
-                child: Center(
-                  child: Text("Create new account",
-                  style: TextStyle(fontFamily:"Teko",
-                            color:ColorApp.mainText, ),),
-                ),),),
-                  
-             ),
-            ),
-          ),
+        CreateAccountButton(),
           // Align(
           //   alignment: Alignment.bottomCenter,
           //   child:Image(height:30,
