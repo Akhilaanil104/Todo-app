@@ -16,6 +16,24 @@ class _LoginPageState extends State<LoginPage> {
   final _formkey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  String? _validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    }
+    // Add more email validation if needed
+    return null;
+  }
+
+  String? _validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your password';
+    } else if (value.length < 6) {
+      return 'Password must be at least 6 characters';
+    }
+    // Add more password validation if needed
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     bool _obscureText = true;
@@ -56,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 Form(
+                  key: _formkey,
                   child: Column(
                     children: [
                       Scrollable(
@@ -71,6 +90,21 @@ class _LoginPageState extends State<LoginPage> {
                                   // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
                                   ),
                               child: TextFormField(
+                                controller: _emailController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your email';
+                                  }
+                                  // Add more email validation if needed
+                                  return null;
+                                },
+                                // validator: (value) {
+                                //   if (value.toString().isEmpty) {
+                                //     return 'enter your email';
+                                //   } else {
+                                //     return null;
+                                //   }
+                                // },
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   labelStyle: TextStyle(
@@ -96,24 +130,43 @@ class _LoginPageState extends State<LoginPage> {
                             // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
                             ),
                         child: TextFormField(
+                          controller: _passwordController,
                           validator: (value) {
-                            passwordValidator();
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your password';
+                            } else if (value.length < 6) {
+                              return 'Password must be at least 6 characters';
+                            }
+                            // Add more password validation if needed
+                            return null;
                           },
                           obscureText: _obscureText,
                           decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _obscureText = !_obscureText;
-                                });
-                              },
-                              icon: Icon(
-                                  color: Colors.white,
-                                  _obscureText
-                                      ? Icons.visibility_off
-                                      // ignore: dead_code
-                                      : Icons.visibility),
+                            // suffixIcon: IconButton(
+                            //   onPressed: () {
+                            //     setState(() {
+                            //       _obscureText = !_obscureText;
+                            //     });
+                            //   },
+                            //   icon: Icon(
+                            //       color: Colors.white,
+                            //       _obscureText
+                            //           ? Icons.visibility_off
+                            //           // ignore: dead_code
+                            //           : Icons.visibility),
+                            // ),
+                              suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            icon: Icon(
+                              _obscureText
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                             ),
+                          ),
                             border: InputBorder.none,
                             labelStyle: TextStyle(
                                 color: Color.fromARGB(255, 176, 179, 183)),
@@ -152,8 +205,13 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             onPressed: () {
                               setState(() {
-                                Navigator.pushReplacementNamed(
-                                    context, '/home');
+                                if (_formkey.currentState!.validate()) {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/home');
+                                } else {
+                                  SnackBar(
+                                      content: Text("Invalid credentials"));
+                                }
                               });
                             },
                           ),
@@ -186,18 +244,126 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-  passwordValidator(){
-
-  //     validator: (value) {
-  //                     if (value == null || value.isEmpty) {
-  //                       return 'Please enter your name';
-  //                     }
-  //                     return null;
-  //                   },
-  //                   onSaved: (value) {
-  //                     _name = value!;
-                    
-  }
 }
+// import 'package:flutter/material.dart';
+// import 'package:todo_app/screens/widgets/appname.dart';
+// import 'package:todo_app/screens/widgets/createbutton.dart';
+// import 'package:todo_app/utils/colors.dart';
+// import 'package:todo_app/utils/const.dart';
 
+// class LoginPage extends StatefulWidget {
+//   const LoginPage({super.key});
 
+//   @override
+//   State<LoginPage> createState() => _LoginPageState();
+// }
+
+// class _LoginPageState extends State<LoginPage> {
+//   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+//   final TextEditingController _emailController = TextEditingController();
+//   final TextEditingController _passwordController = TextEditingController();
+//   bool _obscureText = true;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       resizeToAvoidBottomInset: false,
+//       backgroundColor: ColorApp.bgcolor,
+//       appBar: AppBar(
+//         backgroundColor: ColorApp.bgcolor,
+//         title: const Text(
+//           "English(India)v",
+//           style: TextStyle(color: ColorApp.mainText),
+//         ),
+//         centerTitle: true,
+//       ),
+//       body: Container(
+//         child: Stack(
+//           children: [
+//             Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               crossAxisAlignment: CrossAxisAlignment.center,
+//               children: [
+//                 const AppName(),
+//                 const SizedBox(height: 20),
+//                 Form(
+//                   key: _formKey,
+//                   child: Column(
+//                     children: [
+//                       TextFormField(
+                        // controller: _emailController,
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter your email';
+                        //   }
+                        //   // Add more email validation if needed
+                          // return null;
+                        // },
+//                         decoration: const InputDecoration(
+//                           border: OutlineInputBorder(),
+//                           labelText: "Username",
+//                         ),
+//                       ),
+//                       const SizedBox(height: 20),
+//                       TextFormField(
+                        // controller: _passwordController,
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter your password';
+                        //   } else if (value.length < 6) {
+                        //     return 'Password must be at least 6 characters';
+                        //   }
+                        //   // Add more password validation if needed
+                        //   return null;
+                        // },
+//                         obscureText: _obscureText,
+//                         decoration: InputDecoration(
+//                           suffixIcon: IconButton(
+//                             onPressed: () {
+//                               setState(() {
+//                                 _obscureText = !_obscureText;
+//                               });
+//                             },
+//                             icon: Icon(
+//                               _obscureText
+//                                   ? Icons.visibility_off
+//                                   : Icons.visibility,
+//                             ),
+//                           ),
+//                           border: OutlineInputBorder(),
+//                           labelText: "Password",
+//                         ),
+//                       ),
+//                       const SizedBox(height: 20),
+//                       ElevatedButton(
+//                         onPressed: () {
+//                           if (_formKey.currentState!.validate()) {
+//                             // Process login here, e.g., authenticate user
+//                             // Example navigation on successful login
+//                             Navigator.pushReplacementNamed(context, '/home');
+//                           }
+//                         },
+//                         child: Text("Log in"),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//                 const SizedBox(height: 5),
+//                 InkWell(
+//                   onTap: () {
+//                     // Forgot password action
+//                   },
+//                   child: Text(
+//                     "Forgotten Password",
+//                     style: TextStyle(color: ColorApp.mainText),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             CreateAccountButton(),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

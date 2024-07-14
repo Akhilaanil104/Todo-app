@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/firebase_options.dart';
+import 'package:todo_app/screens/addtodo.dart';
 import 'package:todo_app/screens/homepage.dart';
 import 'package:todo_app/screens/homepage.dart';
 import 'package:todo_app/screens/loginpage.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         "/signup" :  (context) => SignupPage(),
         "/home" :  (context) => Homepage(),
         "/profile" :  (context) => ProfilePage(),
+        "/addtodo":(context) => TodoAddScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
