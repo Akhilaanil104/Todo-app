@@ -4,6 +4,7 @@ import 'package:todo_app/firebase_options.dart';
 import 'package:todo_app/screens/homepage.dart';
 import 'package:todo_app/screens/homepage.dart';
 import 'package:todo_app/screens/loginpage.dart';
+import 'package:todo_app/screens/profilepage.dart';
 
 import 'package:todo_app/screens/signup_page.dart';
 
@@ -25,6 +26,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      initialRoute: "/",
+      routes: {
+        "/" : (context)=>LoginPage(),
+        "/signup" :  (context) => SignupPage(),
+        "/home" :  (context) => Homepage(),
+        "/profile" :  (context) => ProfilePage(),
+      },
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -34,7 +43,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: Homepage(),
+     
 
     );
   }

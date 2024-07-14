@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../utils/colors.dart';
 
-class CreateAccountButton extends StatelessWidget {
+class CreateAccountButton extends StatefulWidget {
   const CreateAccountButton({super.key});
 
+  @override
+  State<CreateAccountButton> createState() => _CreateAccountButtonState();
+}
+
+class _CreateAccountButtonState extends State<CreateAccountButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +26,11 @@ class CreateAccountButton extends StatelessWidget {
                   side: WidgetStateProperty.all(
                       BorderSide(color: ColorApp.mainText)),
                   backgroundColor: WidgetStateProperty.all(ColorApp.bgcolor)),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context).pushNamed('/signup');
+                });
+              },
               child: Center(
                 child: Text(
                   "Create new account",
