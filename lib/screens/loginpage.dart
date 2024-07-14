@@ -145,6 +145,10 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.w900),
                             ),
                             onPressed: () {
+                              setState(() {
+                                Navigator.pushReplacementNamed(
+                                    context, '/home');
+                              });
                           
                             },
                           ),

@@ -74,7 +74,11 @@ class _SignupPageState extends State<SignupPage> {
                   child: SizedBox(
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        });
+                      },
                       child: Text(
                         "Signup",
                         style: TextStyle(fontSize: 18),
