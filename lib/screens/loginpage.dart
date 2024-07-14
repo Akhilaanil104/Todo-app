@@ -13,6 +13,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formkey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     bool _obscureText = true;
@@ -93,6 +96,9 @@ class _LoginPageState extends State<LoginPage> {
                             // border: RoundedRectangleBorder(borderRadius: BorderRadius.all(30))
                             ),
                         child: TextFormField(
+                          validator: (value) {
+                            passwordValidator();
+                          },
                           obscureText: _obscureText,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
@@ -149,7 +155,6 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.pushReplacementNamed(
                                     context, '/home');
                               });
-                          
                             },
                           ),
                         ),
@@ -181,4 +186,18 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+  passwordValidator(){
+
+  //     validator: (value) {
+  //                     if (value == null || value.isEmpty) {
+  //                       return 'Please enter your name';
+  //                     }
+  //                     return null;
+  //                   },
+  //                   onSaved: (value) {
+  //                     _name = value!;
+                    
+  }
 }
+
+
