@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/firebase_options.dart';
 import 'package:todo_app/screens/homepage.dart';
 import 'package:todo_app/screens/loginpage.dart';
-<<<<<<< HEAD
+
 import 'package:todo_app/screens/signup_page.dart';
-=======
-import 'package:todo_app/screens/profilepage.dart';
->>>>>>> 9f12764c0ffe8e0e18d2b6472d3fd8a42a2a9e53
+
 
 
 void main() async {
@@ -34,11 +32,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 10, 92, 92)),
         useMaterial3: true,
       ),
-<<<<<<< HEAD
+
       home: Homepage(),
-=======
-      home: ProfilePage(),
->>>>>>> 9f12764c0ffe8e0e18d2b6472d3fd8a42a2a9e53
+
     );
   }
   
